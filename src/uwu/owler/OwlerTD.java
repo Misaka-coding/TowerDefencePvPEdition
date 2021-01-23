@@ -66,6 +66,15 @@ public class OwlerTD extends Plugin{
         System.out.println("nope");
         Events.on(EventType.PlayerConnect.class,e->{
             e.player.team(Team.derelict);
+            Call.infoMessage(e.player.con,
+                    "PvP Tower defence" +
+                            "\nЦель:" +
+                            "\nЗащита - продержаться 10 минут" +
+                            "\nАтака - уничтожить ядро защитников, пока идет отсчет" +
+                            "\nЧтобы вступить в команду напишите в чат" +
+                            "\n/atk  атака" +
+                            "\n/def  защита"
+            );
         });
         Events.on(EventType.GameOverEvent.class,e->{
             gameover=true;
@@ -85,38 +94,42 @@ public class OwlerTD extends Plugin{
                     Events.fire(GameOverEvent.class,Team.green);gameover=true;gameoverTimer=0;return;
                 }
                 if(Vars.state.teams.cores(Team.green).first()!=null){
-                Vars.state.teams.cores(Team.green).first().items.add(Items.copper, 1);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.lead, 1);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.graphite, 1);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.silicon, 1);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.metaglass, 1);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.titanium, 1);Vars.state.teams.cores(Team.green).first().items.add(Items.copper, 150);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.thorium, 1);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.plastanium, 1);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.phaseFabric, 1);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.surgeAlloy, 1);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.sand, 1);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.pyratite, 1);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.blastCompound, 1);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.coal, 1);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.copper, 10);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.lead, 10);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.graphite, 10);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.silicon, 10);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.metaglass, 10);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.titanium, 10);Vars.state.teams.cores(Team.green).first().items.add(Items.copper, 150);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.thorium, 10);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.plastanium, 10);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.phaseFabric, 10);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.surgeAlloy, 10);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.sand, 10);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.pyratite, 10);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.blastCompound, 10);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.coal, 10);
                 }
                 if(Vars.state.teams.cores(Team.blue).first()!=null){
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.copper, 1);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.lead, 1);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.graphite, 1);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.silicon, 1);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.metaglass, 1);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.titanium, 1);Vars.state.teams.cores(Team.blue).first().items.add(Items.copper, 150);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.thorium, 1);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.plastanium, 1);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.phaseFabric, 1);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.surgeAlloy, 1);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.sand, 1);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.pyratite, 1);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.blastCompound, 1);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.coal, 1);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.copper, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.lead, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.graphite, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.silicon, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.metaglass, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.titanium, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.thorium, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.plastanium, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.phaseFabric, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.surgeAlloy, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.sand, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.pyratite, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.blastCompound, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.coal, 10);
                 }
                 timer=0;
+            }
+
+            for(Player p:Groups.player){
+                if(p.team()==Team.blue&&insideCircle(p.x/8,p.y/8,Team.green.cores().first().x/8,Team.green.cores().first().y/8,50)){p.unit().kill();}
             }
         });
     }
@@ -138,5 +151,9 @@ public class OwlerTD extends Plugin{
             player.team(Team.blue);
             Call.setRules(player.con, attack);
         });
+    }
+    public boolean insideCircle(float x,float y, float x1,float y1,int range){
+        if((x-x1)*(x-x1)+(y-y1)*(y-y1)<range*range){return true;}
+        return false;
     }
 }
