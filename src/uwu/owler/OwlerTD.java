@@ -19,8 +19,10 @@ public class OwlerTD extends Plugin{
     public static Rules defence = new Rules();
     public static boolean gameover =true;
     public static int gameoverTimer=0;
+    public static Timer tmr =new Timer();
     @Override
     public void init(){
+        Vars.state.rules.unitBuildSpeedMultiplier=2.5f;
         attack.bannedBlocks.add(Blocks.duo);
         attack.bannedBlocks.add(Blocks.meltdown);
         attack.bannedBlocks.add(Blocks.scatter);
@@ -59,6 +61,7 @@ public class OwlerTD extends Plugin{
         attack.bannedBlocks.add(Blocks.surgeWall);
         attack.bannedBlocks.add(Blocks.surgeWallLarge);
 
+        defence.bannedBlocks.add(Blocks.foreshadow);
         defence.bannedBlocks.add(Blocks.commandCenter);
         defence.bannedBlocks.add(Blocks.groundFactory);
         defence.bannedBlocks.add(Blocks.airFactory);
@@ -69,7 +72,7 @@ public class OwlerTD extends Plugin{
             Call.infoMessage(e.player.con,
                     "PvP Tower defence" +
                             "\nЦель:" +
-                            "\nЗащита - продержаться 10 минут" +
+                            "\nЗащита - продержаться до конца таймера" +
                             "\nАтака - уничтожить ядро защитников, пока идет отсчет" +
                             "\nЧтобы вступить в команду напишите в чат" +
                             "\n/atk  атака" +
@@ -84,14 +87,24 @@ public class OwlerTD extends Plugin{
                 p.team(Team.derelict);
             }
             gameover=false;
+            tmr.scheduleTask(
+                    new Timer.Task() {
+                        @Override
+                        public void run() {
+                            for(Player p:Groups.player){
+                                p.team(Team.derelict);
+                            }
+                        }
+                    },25f
+            );
         });
         Events.on(Trigger.update.getClass(),e->{
             if(gameover){return;}
             timer++;
             if(timer>100){
                 gameoverTimer++;
-                if(gameoverTimer>10000){
-                    Events.fire(GameOverEvent.class,Team.green);gameover=true;gameoverTimer=0;return;
+                if(gameoverTimer>1000){
+                    Events.fire(new GameOverEvent(Team.green));gameover=true;gameoverTimer=0;return;
                 }
                 if(Vars.state.teams.cores(Team.green).first()!=null){
                 Vars.state.teams.cores(Team.green).first().items.add(Items.copper, 10);
@@ -113,7 +126,7 @@ public class OwlerTD extends Plugin{
                     Vars.state.teams.cores(Team.blue).first().items.add(Items.copper, 10);
                     Vars.state.teams.cores(Team.blue).first().items.add(Items.lead, 10);
                     Vars.state.teams.cores(Team.blue).first().items.add(Items.graphite, 10);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.silicon, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.silicon, 30);
                     Vars.state.teams.cores(Team.blue).first().items.add(Items.metaglass, 10);
                     Vars.state.teams.cores(Team.blue).first().items.add(Items.titanium, 10);
                     Vars.state.teams.cores(Team.blue).first().items.add(Items.thorium, 10);
