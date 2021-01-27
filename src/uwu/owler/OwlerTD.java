@@ -112,7 +112,7 @@ public class OwlerTD extends Plugin{
                 Vars.state.teams.cores(Team.green).first().items.add(Items.graphite, 10);
                 Vars.state.teams.cores(Team.green).first().items.add(Items.silicon, 10);
                 Vars.state.teams.cores(Team.green).first().items.add(Items.metaglass, 10);
-                Vars.state.teams.cores(Team.green).first().items.add(Items.titanium, 10);Vars.state.teams.cores(Team.green).first().items.add(Items.copper, 150);
+                Vars.state.teams.cores(Team.green).first().items.add(Items.titanium, 10);
                 Vars.state.teams.cores(Team.green).first().items.add(Items.thorium, 10);
                 Vars.state.teams.cores(Team.green).first().items.add(Items.plastanium, 10);
                 Vars.state.teams.cores(Team.green).first().items.add(Items.phaseFabric, 10);
@@ -124,8 +124,8 @@ public class OwlerTD extends Plugin{
                 }
                 if(Vars.state.teams.cores(Team.blue).first()!=null){
                     Vars.state.teams.cores(Team.blue).first().items.add(Items.copper, 10);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.lead, 10);
-                    Vars.state.teams.cores(Team.blue).first().items.add(Items.graphite, 10);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.lead, 30);
+                    Vars.state.teams.cores(Team.blue).first().items.add(Items.graphite, 10);s
                     Vars.state.teams.cores(Team.blue).first().items.add(Items.silicon, 30);
                     Vars.state.teams.cores(Team.blue).first().items.add(Items.metaglass, 10);
                     Vars.state.teams.cores(Team.blue).first().items.add(Items.titanium, 10);
@@ -140,10 +140,11 @@ public class OwlerTD extends Plugin{
                 }
                 timer=0;
             }
-
+/*
             for(Player p:Groups.player){
                 if(p.team()==Team.blue&&insideCircle(p.x/8,p.y/8,Team.green.cores().first().x/8,Team.green.cores().first().y/8,50)){p.unit().kill();}
             }
+            */
         });
     }
 
